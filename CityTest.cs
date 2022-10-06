@@ -14,18 +14,22 @@ namespace coint_test_tests
         [Test]
         public void UniqueCoinsTypeCountTest()
         {
-            ICity cityOne = new City("Russia", 1, 1);
-            ICity cityTwo = new City("Ukraine", 1, 2);
+            var countryOneName = "Russia";
+            
+            ICity cityOne = new City(countryOneName, 1, 1);
 
-            ICoin coinOne = new Coin(cityOne);
-            ICoin coinTwo = new Coin(cityTwo);
+            ICoin coinOne = new Coin(countryOneName);
+            ICoin coinTwo = new Coin("Ukraine");           
+
 
             cityOne.AddCoin(coinOne);
             cityOne.AddCoin(coinTwo);
 
             var uniqueCoinsAmmount = cityOne.UniqueCoinsTypeCount();
 
-            Assert.AreEqual(uniqueCoinsAmmount, 2);
+            Assert.AreEqual(2, uniqueCoinsAmmount);
+
+            //ICoin coinTwo = new Coin("Ukraine");
         }
     }
 }
