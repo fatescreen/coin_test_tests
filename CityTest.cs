@@ -3,7 +3,7 @@ using coin_test.EuroDiffusion;
 
 namespace coint_test_tests
 {
-    public class Tests
+    public class CityTest
     {
         [SetUp]
         public void Setup()
@@ -15,21 +15,25 @@ namespace coint_test_tests
         public void UniqueCoinsTypeCountTest()
         {
             var countryOneName = "Russia";
+            var countryTwoName = "Ukraine";
+            var countryThreeName = "Belarus";
             
             ICity cityOne = new City(countryOneName, 1, 1);
+            Assert.AreEqual(1, cityOne.UniqueCoinsTypeCount());
 
-            ICoin coinOne = new Coin(countryOneName);
-            ICoin coinTwo = new Coin("Ukraine");           
+            cityOne.AddCoin(new Coin(countryOneName));
+            cityOne.AddCoin(new Coin(countryTwoName));
+            Assert.AreEqual(2, cityOne.UniqueCoinsTypeCount());
 
+            cityOne.AddCoin(new Coin(countryTwoName));
+            Assert.AreEqual(2, cityOne.UniqueCoinsTypeCount());
 
-            cityOne.AddCoin(coinOne);
-            cityOne.AddCoin(coinTwo);
+            cityOne.AddCoin(new Coin(countryThreeName));
+            Assert.AreEqual(3, cityOne.UniqueCoinsTypeCount());
 
-            var uniqueCoinsAmmount = cityOne.UniqueCoinsTypeCount();
-
-            Assert.AreEqual(2, uniqueCoinsAmmount);
-
-            //ICoin coinTwo = new Coin("Ukraine");
+            cityOne.AddCoin(new Coin(countryThreeName));
+            cityOne.AddCoin(new Coin(countryThreeName));
+            Assert.AreEqual(3, cityOne.UniqueCoinsTypeCount());
         }
     }
 }
