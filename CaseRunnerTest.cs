@@ -43,14 +43,6 @@ namespace coint_test_tests
 
             Assert.GreaterOrEqual(caseRunner.SolveCase(caseRunner.CountriesWithCoordinates), 2);
         }
-        [Test]
-        public void SolveCaseTest4()
-        {
-            caseRunner.CountriesWithCoordinates.Add("Russia", new List<int>() { 1, 1, 5, 1 });
-            caseRunner.CountriesWithCoordinates.Add("Ukraine", new List<int>() { 1, 2, 5, 4 });
-
-            Assert.GreaterOrEqual(caseRunner.SolveCase(caseRunner.CountriesWithCoordinates), 3);
-        }
 
     }
 }
